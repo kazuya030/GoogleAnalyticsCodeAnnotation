@@ -1,7 +1,7 @@
 (function () {
     //2014/6/8
 
-    var ba = encodeURIComponent, ca = window, da = setTimeout, m = Math, aa = decodeURIComponent;
+    //var encodeURIComponent = encodeURIComponent, window = window, setTimeout = setTimeout, Math = Math, decodeURIComponent = decodeURIComponent;
 
     function ha(a, b) {
         return a.name = b
@@ -18,7 +18,7 @@
             a[b] = !0
         };
         this.O = function () {
-            for (var b = [], c = 0; c < a[w]; c++)a[c] && (b[m.floor(c / 6)] = b[m.floor(c / 6)] ^ 1 << c % 6);
+            for (var b = [], c = 0; c < a[w]; c++)a[c] && (b[Math.floor(c / 6)] = b[Math.floor(c / 6)] ^ 1 << c % 6);
             for (c = 0; c < b[w]; c++)b[c] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"[ma](b[c] || 0);
             return b[E]("") + "~"
         }
@@ -55,7 +55,7 @@
     }
 
     function Aa(a) {
-        if (ba instanceof Function)return ba(a);
+        if (encodeURIComponent instanceof Function)return encodeURIComponent(a);
         F(28);
         return a
     }
@@ -66,8 +66,8 @@
 
     function tc(a) {
         a = a[y]("+")[E](" ");
-        if (aa instanceof Function)try {
-            return aa(a)
+        if (decodeURIComponent instanceof Function)try {
+            return decodeURIComponent(a)
         } catch (b) {
             F(18)
         }
@@ -120,7 +120,7 @@
 
     function Ea(a, b) {
         if (1 == b[w] && null != b[0] && "object" === typeof b[0])return b[0];
-        for (var c = {}, d = m.min(a[w] + 1, b[w]), e = 0; e < d; e++)if ("object" === typeof b[e]) {
+        for (var c = {}, d = Math.min(a[w] + 1, b[w]), e = 0; e < d; e++)if ("object" === typeof b[e]) {
             for (var f in b[e])b[e][Qd](f) && (c[f] = b[e][f]);
             break
         } else e < a[w] ? c[a[e]] = b[e] : J("Unrecognized positional argument: " + b[e]);
@@ -248,10 +248,10 @@
     }
 
     var M = new function () {
-        var a = ca.console, b = a && "Firebug Lite" == a.provider;
+        var a = window.console, b = a && "Firebug Lite" == a.provider;
         this.log = function (c, d, e) {
             if (a) {
-                var f = Ha[D](ca, [][q][A](arguments, 1));
+                var f = Ha[D](window, [][q][A](arguments, 1));
                 if (b)for (var f = f[y]("\n"), ea = 0; ea < f[w]; ea++)a[c](f[ea]); else if (a[c])a[c](f); else"group" == c && a.log(f)
             }
         }
@@ -447,7 +447,7 @@
         });
         Xd(c)
     };
-    var Q = ca, I = document, Wb = function (a) {
+    var Q = window, I = document, Wb = function (a) {
         var b = Q._gaUserPrefs;
         if (b && b.ioo && b.ioo() || a && !0 === Q["ga-disable-" + a])return!0;
         try {
@@ -457,7 +457,7 @@
         }
         return!1
     }, $c = function (a) {
-        da(a, 100)
+        setTimeout(a, 100)
     }, Xb = function (a) {
         var b = [], c = I[ia][y](";");
         a = new RegExp("^\\s*" + a + "=\\s*(.*?)\\s*$");
@@ -534,7 +534,7 @@
             if (!I.body)return $c(function () {
                 dc(a, b)
             }), !0;
-            a = ba(a);
+            a = encodeURIComponent(a);
             try {
                 var c =
                     I[la]('<iframe name="' + a + '"></iframe>')
@@ -545,7 +545,7 @@
             c.width = "0";
             c.style.display = "none";
             c.style.visibility = "hidden";
-            var e = I[z], e = hd() + "/analytics_iframe.html#" + ba(e[B] + "//" + e[u] + "/favicon.ico"), f = function () {
+            var e = I[z], e = hd() + "/analytics_iframe.html#" + encodeURIComponent(e[B] + "//" + e[u] + "/favicon.ico"), f = function () {
                 c.src = "";
                 c[sc] && c[sc].removeChild(c)
             };
@@ -563,7 +563,7 @@
                     } catch (a) {
                     }
                     l++;
-                    da(k, 200)
+                    setTimeout(k, 200)
                 }
             };
             Ba(c, "load", k);
@@ -573,7 +573,7 @@
         },
         fc = function (a, b, c) {
             O("Error: type=%s method=%s message=%s account=%s", arguments);
-            if (!(1 <= 100 * m.random() || Wb("?"))) {
+            if (!(1 <= 100 * Math.random() || Wb("?"))) {
                 var d = ["t=error", "_e=" + a, "_v=j22d", "sr=1"];
                 b && d[n]("_f=" + b);
                 c && d[n]("_m=" + Aa(c[C](0, 100)));
@@ -600,7 +600,7 @@
             L("Aborted execution due to exception: " + d)
         }
         b = a.get(Nb);
-        b != za && G(b) && (L("Manually firing callback"), a.set(Nb, za, !0), da(b, 10))
+        b != za && G(b) && (L("Manually firing callback"), a.set(Nb, za, !0), setTimeout(b, 10))
     };
     function hc(a) {
         if (100 != a.get(Db) && ic(V(a, R)) % 1E4 >= 100 * jc(a, Db))throw N("User has been sampled out. Aborting hit."), "abort";
@@ -659,7 +659,7 @@
         va[p](a.get(U)) || (O("The tracking Id can only be of the format UA-NNNNNN-N. Aborting hit."), F(44))
     };
     var ae = function () {
-        return m.round(2147483647 * m.random())
+        return Math.round(2147483647 * Math.random())
     }, be = function () {
         try {
             var a = new Uint32Array(1);
@@ -677,8 +677,8 @@
         if ("transaction" != c && "item" != c) {
             var c = jc(a, uc), d = (new Date)[oa](), e = jc(a, vc);
             0 == e && a.set(vc, d);
-            e = m.round(2 * (d - e) / 1E3);
-            0 < e && (c = m.min(c + e, 20), a.set(vc, d));
+            e = Math.round(2 * (d - e) / 1E3);
+            0 < e && (c = Math.min(c + e, 20), a.set(vc, d));
             if (0 >= c)throw N("Exceeded rate limit for sending hits. Aborting hit."), "abort";
             a.set(uc, --c)
         }
@@ -745,8 +745,8 @@
         O("Ignored attempt to update read-only property: " + b)
     };
     var P;
-    if (P = H(ca.GoogleAnalyticsObject)) {
-        var ob = ca.GoogleAnalyticsObject;
+    if (P = H(window.GoogleAnalyticsObject)) {
+        var ob = window.GoogleAnalyticsObject;
         P = ob ? ob[Cd](/^[\s\xa0]+|[\s\xa0]+$/g, "") : ""
     }
     var Fc = P || "ga", $b = !1, Gc = X("apiVersion", "v"), Hc = X("clientVersion", "_v"), Fb = W("anonymizeIp", "aip"), yb = W("adSenseId", "a"), Ma = W("hitType", "t"), Nb = W("hitCallback"), Na = W("hitPayload"), Gb = W("nonInteraction", "ni"), Pd = W("currencyCode", "cu"), Hb = W("sessionControl", "sc", ""), zb = W("queueTime", "qt"), md = W("_s", "_s"), Oa = W("screenName", "cd"), Pa = W("location", "dl", ""), Qa = W("referrer", "dr"), Ra = W("page", "dp", ""), Sa = W("hostname", "dh"), Ta = W("language", "ul"), Ua = W("encoding", "de"), Va = W("title", "dt", function () {
@@ -803,7 +803,7 @@
         b.fa = !0;
         if (0 == b.Z)return 0;
         void 0 === a && (a = be());
-        return 0 == a % b.Z ? m.floor(a / b.Z) % b.ia + 1 : 0
+        return 0 == a % b.Z ? Math.floor(a / b.Z) % b.ia + 1 : 0
     };
 
     function Qc() {
@@ -829,7 +829,7 @@
         return b || void 0
     };
     var Sc = function (a, b) {
-        var c = m.min(jc(a, Eb), 100);
+        var c = Math.min(jc(a, Eb), 100);
         if (ic(V(a, R)) % 100 >= c)L("Site speed data not sent - visitor sampled out"); else if (c = {}, qd(c) || rd(c)) {
             var d = c[Ic];
             void 0 == d || Infinity == d || isNaN(d) ? L("Site speed data not sent - unsupported browser") : 0 < d ? (Rc(c, Kc), Rc(c, Nc), Rc(c, Mc), Rc(c, Jc), Rc(c, Lc), Rc(c, Oc), Rc(c, Pc), b(c)) : (L("Site speed data not available - waiting for onload"), Ba(Q, "load", function () {
@@ -1121,7 +1121,7 @@
             var d;
             d = I[z][g];
             var e = Q[na], f = /^#?gaso=([^&]*)/;
-            if (e = (d = (d = d && d[h](f) || e && e[h](f)) ? d[1] : Xb("GASO")[0] || "") && d[h](/^(?:!([-0-9a-z.]{1,40})!)?([-.\w]{10,1200})$/i))ld("GASO", "" + d, c, b, a, 0), ca._udo || (ca._udo = b), ca._utcp || (ca._utcp = c), a = e[1], fd("https://www.google.com/analytics/web/inpage/pub/inpage.js?" + (a ? "prefix=" + a + "&" : "") + Yd(), "_gasojs");
+            if (e = (d = (d = d && d[h](f) || e && e[h](f)) ? d[1] : Xb("GASO")[0] || "") && d[h](/^(?:!([-0-9a-z.]{1,40})!)?([-.\w]{10,1200})$/i))ld("GASO", "" + d, c, b, a, 0), window._udo || (window._udo = b), window._utcp || (window._utcp = c), a = e[1], fd("https://www.google.com/analytics/web/inpage/pub/inpage.js?" + (a ? "prefix=" + a + "&" : "") + Yd(), "_gasojs");
             Nd = !0
         }
     };
@@ -1223,7 +1223,7 @@
             c), F(22)) : (f = c[C](e + 1), "1" != c[C](0, e) ? (J("Unrecognized linker parameter version: " + c), F(22)) : (e = f[s]("."), -1 == e ? (J("Invalid linker parameter v1 payload: " + c), F(22)) : (d = f[C](0, e), e = f[C](e + 1), d != ud(e, 0) && d != ud(e, -1) && d != ud(e, -2) ? (J("Bad or expired linker parameter hash: " + c), F(23)) : (Ga("Loaded linker parameter: " + c), F(11), a[r].set(R, e)))))) : (J("Linker disabled. Ignoring linker parameter: " + c), F(21));
         b && (Ga("Used client Id from constructor."), F(9), a[r].set(R, Aa(b)));
         a.get(R) || ((c = (c = Q.gaGlobal && Q.gaGlobal.vid) &&
-            -1 != c[fa](/^(?:utma\.)?\d+\.\d+$/) ? c : void 0) ? (Ga("New visitor. Copying new clientId"), F(17), a[r].set(R, c)) : (Ga("New visitor. Generating new clientId"), F(8), a[r].set(R, [Yd() ^ yd() & 2147483647, m.round((new Date)[oa]() / 1E3)][E]("."))));
+            -1 != c[fa](/^(?:utma\.)?\d+\.\d+$/) ? c : void 0) ? (Ga("New visitor. Copying new clientId"), F(17), a[r].set(R, c)) : (Ga("New visitor. Generating new clientId"), F(8), a[r].set(R, [Yd() ^ yd() & 2147483647, Math.round((new Date)[oa]() / 1E3)][E]("."))));
         Yc(a)
     }, wd = function (a) {
         var b = Q[sa], c = Q.screen, d = I[z];
