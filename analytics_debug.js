@@ -11,7 +11,7 @@
         return a.href = b
     }
 
-    //var s_push = "push", s_hash = "hash", s_test = "test", s_slice = "slice", s_replace = "replace", s_data = "data", s_cookie = "cookie", s_charAt = "charAt", s_indexOf = "indexOf", s_match = "match", s_defaultValue = "defaultValue", s_send = "send", s_port = "port", s_sreateElement = "createElement", s_setAttribute = "setAttribute", s_name = "name", s_getTime = "getTime", s_host = "host", s_length = "length", s_prototype = "prototype", s_clientWidth = "clientWidth", s_split = "split", s_location = "location", s_hasOwnProperty = "hasOwnProperty", s_hostname = "hostname", s_search = "search", s_target = "target", s_call = "call", s_protocol = "protocol", s_clientHeight = "clientHeight", s_href = "href", s_substring = "substring", s_action = "action", s_apply = "apply", s_navigator = "navigator", s_parentNode = "parentNode", s_join = "join", s_unshift = "unshift", s_toLowerCase = "toLowerCase";
+    //var s_push = "push", s_hash = "hash", s_test = "test", s_slice = "slice", s_replace = "replace", s_data = "data", s_cookie = "cookie", s_charAt = "charAt", s_indexOf = "indexOf", s_match = "match", s_defaultValue = "defaultValue", s_send = "send", s_port = "port", s_createElement = "createElement", s_setAttribute = "setAttribute", s_name = "name", s_getTime = "getTime", s_host = "host", s_length = "length", s_prototype = "prototype", s_clientWidth = "clientWidth", s_split = "split", s_location = "location", s_hasOwnProperty = "hasOwnProperty", s_hostname = "hostname", s_search = "search", s_target = "target", s_call = "call", s_protocol = "protocol", s_clientHeight = "clientHeight", s_href = "href", s_substring = "substring", s_action = "action", s_apply = "apply", s_navigator = "navigator", s_parentNode = "parentNode", s_join = "join", s_unshift = "unshift", s_toLowerCase = "toLowerCase";
     var wa = new function () {
         var a = [];
         this.set = function (b) {
@@ -44,7 +44,7 @@
     }
 
     function ac(a) {
-        var b = I.sreateElement("img");
+        var b = I.createElement("img");
         b.width = 1;
         b.height = 1;
         b.src = a;
@@ -88,7 +88,7 @@
     function fd(a, b) {
         if (a) {
             N("Loading script: %s", a);
-            var c = I.sreateElement("script");
+            var c = I.createElement("script");
             c.type = "text/javascript";
             c.async = !0;
             c.src = a;
@@ -537,9 +537,9 @@
             a = encodeURIComponent(a);
             try {
                 var c =
-                    I.sreateElement('<iframe name="' + a + '"></iframe>')
+                    I.createElement('<iframe name="' + a + '"></iframe>')
             } catch (d) {
-                c = I.sreateElement("iframe"), ha(c, a)
+                c = I.createElement("iframe"), ha(c, a)
             }
             c.height = "0";
             c.width = "0";
@@ -991,7 +991,7 @@
                     d[e].setAttribute("value", c);
                     return
                 }
-                d = I.sreateElement("input");
+                d = I.createElement("input");
                 d.setAttribute("type", "hidden");
                 d.setAttribute("name",
                     "_ga");
@@ -1370,7 +1370,7 @@
             return[b, "" + c, a]
         }
 
-        var c = I.sreateElement("a");
+        var c = I.createElement("a");
         Bd(c, I.location.href);
         var d = (c.protocol || "").toLowerCase(), e = b(c), f = c.search || "", ea = d + "//" + e[0] + (e[1] ? ":" + e[1] : "");
         ga(a, "//") ? a = d + a : ga(a, "/") ? a = ea + a : !a || ga(a, "?") ? a = ea + e[2] + (a || f) : 0 > a.split("/")[0].indexOf(":") && (a = ea + e[2].substring(0, e[2].lastIndexOf("/")) + "/" + a);
