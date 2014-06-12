@@ -1,7 +1,7 @@
 (function () {
     //2014/6/8
 
-    var aa = encodeURIComponent, ba = window, ca = Infinity, da = setTimeout, ea = isNaN, m = Math, ga = decodeURIComponent;
+    //var encodeURIComponent = encodeURIComponent, window = window, Infinity = Infinity, setTimeout = setTimeout, isNaN = isNaN, Math = Math, decodeURIComponent = decodeURIComponent;
 
     function ha(a, b) {
         return a.name = b
@@ -47,22 +47,22 @@
     }
 
     function La() {
-        return m.round(2147483647 * m.random())
+        return Math.round(2147483647 * Math.random())
     }
 
     function Ma() {
     }
 
     function Na(a, b) {
-        if (aa instanceof Function)return b ? encodeURI(a) : aa(a);
+        if (encodeURIComponent instanceof Function)return b ? encodeURI(a) : encodeURIComponent(a);
         J(68);
         return escape(a)
     }
 
     function K(a) {
         a = a[z]("+")[E](" ");
-        if (ga instanceof Function)try {
-            return ga(a)
+        if (decodeURIComponent instanceof Function)try {
+            return decodeURIComponent(a)
         } catch (b) {
             J(17)
         } else J(68);
@@ -172,7 +172,7 @@
 
     function $a(a, b, c) {
         N("Error: type=%s method=%s message=%s account=%s", arguments);
-        if (1 <= Za)N("(suppressing additional error hits)"); else if (!(1 <= 100 * m.random() || wd())) {
+        if (1 <= Za)N("(suppressing additional error hits)"); else if (!(1 <= 100 * Math.random() || wd())) {
             var d = ["utmt=error", "utmerr=" + a, "utmwv=5.5.2dcd", "utmn=" + La(), "utmsp=1"];
             b && d[n]("api=" + b);
             c && d[n]("msg=" + Na(c[B](0, 100)));
@@ -424,7 +424,7 @@
             0 < b.u && c && (b.u--, b.u || c())
         };
         this.Na = function () {
-            !b.u && c && da(c, 10)
+            !b.u && c && setTimeout(c, 10)
         };
         a.set(Dc, b, !0)
     };
@@ -627,14 +627,14 @@
         var b = a && void 0 != a.firebug, c = a && "Firebug Lite" == a.provider;
         this.log = function (b, e, f) {
             if (a) {
-                var h = Ad[D](ba, [][p][Aa](arguments, 1));
+                var h = Ad[D](window, [][p][Aa](arguments, 1));
                 if (c)for (var h = h[z]("\n"), l = 0; l < h[x]; l++)a[b](h[l]); else a[b](h)
             }
         };
         this.dir = function (d) {
             a && (b || c ? a.dir(d) : a.log(Bd(d, 2)[E]("\n")))
         }
-    }(ba.console), Bd = function (a, b) {
+    }(window.console), Bd = function (a, b) {
         b = b || 0;
         var c = [], d;
         for (d in a)if (a[ya](d))if ("object" == typeof a[d])c[n](Cd(d, 20 + b, b) + " : "), c[n][D](c, Bd(a[d], b + 4)); else c[n](Cd(d, 20 + b, b) + " : " + a[d]);
@@ -654,7 +654,7 @@
 
         function e(c, d) {
             var e = b[c];
-            d && void 0 == e || "number" == typeof e && !ea(e) && isFinite(e) || N("The %s API expects a number value for argument %s. The argument given (%s) was a %s.",
+            d && void 0 == e || "number" == typeof e && !isNaN(e) && isFinite(e) || N("The %s API expects a number value for argument %s. The argument given (%s) was a %s.",
                 a, c, e, typeof e)
         }
 
@@ -809,7 +809,7 @@
         fa("Ga.js Version", a.utmwv);
         fa("Cachebuster", a.utmn);
         t[Ga](q[E]("\n"));
-        Z[D](ba, t)
+        Z[D](window, t)
     }
 
     var Ed = function (a, b, c) {
@@ -894,7 +894,7 @@
             a[b] = !0
         };
         this.$a = function () {
-            for (var b = [], c = 0; c < a[x]; c++)a[c] && (b[m[ka](c / 6)] = b[m[ka](c / 6)] ^ 1 << c % 6);
+            for (var b = [], c = 0; c < a[x]; c++)a[c] && (b[Math[ka](c / 6)] = b[Math[ka](c / 6)] ^ 1 << c % 6);
             for (c = 0; c < b[x]; c++)b[c] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"[la](b[c] || 0);
             return b[E]("") + "~"
         }
@@ -903,7 +903,7 @@
     function J(a) {
         Hd.set(a)
     };
-    var X = ba, M = document, wd = function (a) {
+    var X = window, M = document, wd = function (a) {
         var b = X._gaUserPrefs;
         if (b && b.ioo && b.ioo() || a && !0 === X["ga-disable-" + a])return!0;
         try {
@@ -915,7 +915,7 @@
     }, bf = function () {
         return X[Fa] && "preview" == X[Fa].loadPurpose
     }, uf = function (a, b) {
-        da(a, b)
+        setTimeout(a, b)
     }, Id = function (a) {
         td.i("cookieReads");
         var b = [], c = M.cookie[z](";");
@@ -1180,7 +1180,7 @@
     }
 
     function Sd(a) {
-        return!("number" == typeof a || void 0 != Number && a instanceof Number) || m.round(a) != a || ea(a) || a == ca ? !1 : !0
+        return!("number" == typeof a || void 0 != Number && a instanceof Number) || Math.round(a) != a || isNaN(a) || a == Infinity ? !1 : !0
     };
     var Ud = function (a) {
         var b = X.gaGlobal;
@@ -1496,9 +1496,9 @@
         return b ? Na(c) : c
     }, wf = function (a) {
         try {
-            var b = Va(M[A][Da], !1), c = ga(Sa(b.d.get("utm_referrer"))) || "";
+            var b = Va(M[A][Da], !1), c = decodeURIComponent(Sa(b.d.get("utm_referrer"))) || "";
             c && a.set(Qb, c);
-            var d = ga(Ra(b.d.get("utm_expid"))) || "";
+            var d = decodeURIComponent(Ra(b.d.get("utm_expid"))) || "";
             d && (d = d[z](".")[0], a.set(Uc, "" + d))
         } catch (e) {
             J(146)
@@ -1508,12 +1508,12 @@
         b && a.set(Uc, "" + b)
     };
     var Ee = function (a, b) {
-        var c = m.min(a.b(Mc, 0), 100);
+        var c = Math.min(a.b(Mc, 0), 100);
         if (a.b(Zb, 0) % 100 >= c)return!1;
         c = xf() || yf();
         if (void 0 == c)return!1;
         var d = c[0];
-        if (void 0 == d || d == ca || ea(d))return!1;
+        if (void 0 == d || d == Infinity || isNaN(d))return!1;
         0 < d ? zf(c) ? b(De(c)) : b(De(c[p](0, 1))) : Oa(X, "load", function () {
             Ee(a, b)
         }, !1);
@@ -1527,11 +1527,11 @@
         e.s(14, 90, c);
         return e
     }, zf = function (a) {
-        for (var b = 1; b < a[x]; b++)if (ea(a[b]) || a[b] == ca || 0 > a[b])return!1;
+        for (var b = 1; b < a[x]; b++)if (isNaN(a[b]) || a[b] == Infinity || 0 > a[b])return!1;
         return!0
     }, Fe = function (a) {
-        return ea(a) ||
-            0 > a ? 0 : 5E3 > a ? 10 * m[ka](a / 10) : 5E4 > a ? 100 * m[ka](a / 100) : 41E5 > a ? 1E3 * m[ka](a / 1E3) : 41E5
+        return isNaN(a) ||
+            0 > a ? 0 : 5E3 > a ? 10 * Math[ka](a / 10) : 5E4 > a ? 100 * Math[ka](a / 100) : 41E5 > a ? 1E3 * Math[ka](a / 1E3) : 41E5
     }, De = function (a) {
         for (var b = new Td, c = 0; c < a[x]; c++)b.f(14, c + 1, "" + Fe(a[c])), b.s(14, c + 1, a[c]);
         return b
@@ -1621,7 +1621,7 @@
         this.set(eb, b || "UA-XXXXX-X");
         this.set(hb, a || "");
         this.set(gb, c || "");
-        this.set(ib, m.round((new Date)[g]() / 1E3));
+        this.set(ib, Math.round((new Date)[g]() / 1E3));
         this.set(R, "/");
         this.set(kb, 63072E6);
         this.set(mb, 15768E6);
@@ -1732,7 +1732,7 @@
         1 * e === e && (f = e);
         if (this.a.b(Zb, 0) % 100 >= f)return Z("Hit sampled out."), !1;
         c = 1 * ("" + c);
-        if ("" == a || !Rd(a) || "" == b || !Rd(b) || !Sd(c) || ea(c) || 0 > c || 0 > f || 100 < f || void 0 != d && ("" == d || !Rd(d)))return zd("Invalid parameters. Aborting hit."), !1;
+        if ("" == a || !Rd(a) || "" == b || !Rd(b) || !Sd(c) || isNaN(c) || 0 > c || 0 > f || 100 < f || void 0 != d && ("" == d || !Rd(d)))return zd("Invalid parameters. Aborting hit."), !1;
         this.B(Ge(a, b, c, d));
         Z("User timing data sent.");
         return!0
@@ -1929,12 +1929,12 @@
     var He = function (a) {
         "trans" !== a.get(Bc) && 500 <= a.b(ic, 0) && (L("Exceeded maximum hits per session. Aborting hit."), a[wa]());
         if ("event" === a.get(Bc)) {
-            var b = (new Date)[g](), c = a.b(kc, 0), d = a.b(ec, 0), c = m[ka]((b - (c != d ? c : 1E3 * c)) / 1E3 * 1);
-            0 < c && (a.set(kc, b), a.set(jc, m.min(10, a.b(jc, 0) + c)));
+            var b = (new Date)[g](), c = a.b(kc, 0), d = a.b(ec, 0), c = Math[ka]((b - (c != d ? c : 1E3 * c)) / 1E3 * 1);
+            0 < c && (a.set(kc, b), a.set(jc, Math.min(10, a.b(jc, 0) + c)));
             0 >= a.b(jc, 0) && (L("Exceeded maximum hit rate. Aborting hit."), a[wa]())
         }
     }, Je = function (a) {
-        "event" === a.get(Bc) && a.set(jc, m.max(0, a.b(jc, 10) - 1))
+        "event" === a.get(Bc) && a.set(jc, Math.max(0, a.b(jc, 10) - 1))
     };
     var Ke = function () {
             var a = [];
@@ -2103,7 +2103,7 @@
         return!0
     }, Ye = function (a, b) {
         if (M.body) {
-            a = aa(a);
+            a = encodeURIComponent(a);
             try {
                 var c = M[pa]('<iframe name="' + a + '"></iframe>')
             } catch (d) {
@@ -2114,7 +2114,7 @@
             c.width = "0";
             c.style.display = "none";
             c.style.visibility = "hidden";
-            var e = M[A], e = Cf() + "/u/post_iframe_dc.html#" + aa(e[Ba] + "//" + e[v] + "/favicon.ico"), f = function () {
+            var e = M[A], e = Cf() + "/u/post_iframe_dc.html#" + encodeURIComponent(e[Ba] + "//" + e[v] + "/favicon.ico"), f = function () {
                 c.src = "";
                 c.parentNode && c.parentNode.removeChild(c)
             };
@@ -2132,7 +2132,7 @@
                     } catch (a) {
                     }
                     l++;
-                    da(q, 200)
+                    setTimeout(q, 200)
                 }
             };
             Oa(c, "load", q);
