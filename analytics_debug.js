@@ -272,45 +272,45 @@
     function Ga(a, b) {
         var c = [].slice.call(arguments);
         c.unshift("log");
-        M.log.apply(M, c)
+        _console.log.apply(_console, c)
     }
     function N(a, b) {
         var c = [].slice.call(arguments);
         c.unshift("info");
-        M.log.apply(M, c)
+        _console.log.apply(_console, c)
     }
     function J(a, b) {
         var c = [].slice.call(arguments);
         c.unshift("warn");
-        M.log.apply(M, c)
+        _console.log.apply(_console, c)
     }
     function O(a, b) {
         var c = [].slice.call(arguments);
         c.unshift("error");
-        M.log.apply(M, c)
+        _console.log.apply(_console, c)
     }
     function L(a, b) {
         var c = Q.ga_debug;
-        c && c.trace && (c = [].slice.call(arguments), c.unshift("log"), M.log.apply(M, c))
+        c && c.trace && (c = [].slice.call(arguments), c.unshift("log"), _console.log.apply(_console, c))
     }
 
     function dd(a, b) {
         var c = [].slice.call(arguments);
         c.unshift("group");
-        M.log.apply(M, c)
+        _console.log.apply(_console, c)
     }
     function ge() {
-        M.log.apply(M, ["groupEnd"])
+        _console.log.apply(_console, ["groupEnd"])
     }
-    var M = new function() {
-            var a = window.console,
-                b = a && "Firebug Lite" == a.provider;
+    var _console = new function() {
+            var _console = window.console,
+                b = _console && "Firebug Lite" == _console.provider;
             this.log = function(c, d, e) {
-                if (a) {
+                if (_console) {
                     var f = Ha.apply(window, [].slice.call(arguments, 1));
-                    if (b) for (var f = f.split("\n"), ea = 0; ea < f.length; ea++) a[c](f[ea]);
-                    else if (a[c]) a[c](f);
-                    else "group" == c && a.log(f)
+                    if (b) for (var f = f.split("\n"), ea = 0; ea < f.length; ea++) _console[c](f[ea]);
+                    else if (_console[c]) _console[c](f);
+                    else "group" == c && _console.log(f)
                 }
             }
         };
